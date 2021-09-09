@@ -576,7 +576,7 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
             mViewPager.setAutoPlayDelegate(this);
 
             int zeroItem = Integer.MAX_VALUE / 2 - (Integer.MAX_VALUE / 2) % mViews.size();
-            mViewPager.setCurrentItem(zeroItem);
+            mViewPager.setCurrentItem(zeroItem, false);
 
             startAutoPlay();
         } else {
@@ -675,8 +675,8 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
 
         // 处理 RecyclerView 中从对用户不可见变为可见时卡顿的问题
         if (!mIsFirstInvisible && mAutoPlayAble && mViewPager != null && getItemCount() > 0 && mPageScrollPositionOffset != 0) {
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1,false);
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1,false);
         }
         mIsFirstInvisible = false;
     }
@@ -770,7 +770,7 @@ public class BGABanner extends RelativeLayout implements BGAViewPager.AutoPlayDe
      */
     private void switchToNextPage() {
         if (mViewPager != null) {
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1,false);
         }
     }
 
